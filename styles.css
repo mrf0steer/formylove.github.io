@@ -1,0 +1,202 @@
+body {
+	background: #000;
+	margin: 0;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+.container {
+	width: 90%;
+	max-width: 800px;
+	position: relative;
+	z-index: 1;
+}
+
+.letter-container {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.pixel-letter {
+	border: 4px solid #fff;
+	padding: 30px;
+	background: #000;
+	position: relative;
+	min-height: 80px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.pixel-hearts {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect x="1" y="0" width="2" height="2" fill="white" opacity="0.3"/><rect x="7" y="0" width="2" height="2" fill="white" opacity="0.3"/><rect x="0" y="2" width="4" height="2" fill="white" opacity="0.3"/><rect x="6" y="2" width="4" height="2" fill="white" opacity="0.3"/><rect x="0" y="4" width="10" height="2" fill="white" opacity="0.3"/><rect x="2" y="6" width="6" height="2" fill="white" opacity="0.3"/><rect x="4" y="8" width="2" height="2" fill="white" opacity="0.3"/></svg>');
+	background-size: 20px 20px;
+	z-index: 0;
+	opacity: 0.2;
+}
+
+.letter-content {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 100%;
+}
+
+pre {
+	color: #fff;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 16px;
+	line-height: 1.6;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+	letter-spacing: 0.5px;
+	margin: 0;
+	flex-grow: 1;
+}
+
+.click-prompt {
+	color: #fff;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
+	text-align: center;
+	margin: 15px 0 0;
+	animation: pulse 1.5s infinite;
+	align-self: center;
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.6;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+.pixel-letter:active {
+	transform: scale(0.98);
+}
+
+.pixel-letter[data-completed='true'] {
+	cursor: default;
+}
+
+.hidden {
+	display: none;
+}
+
+.visible {
+	display: block;
+}
+
+.cat-container {
+	text-align: center;
+	margin-top: 5px;
+	opacity: 1;
+	transform: translateY(20px);
+	transition: all 0.8s ease;
+	z-index: 2;
+	position: relative;
+}
+
+.cat-container.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.cat-gif {
+	max-width: 150px;
+	image-rendering: pixelated;
+	filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+@media (max-width: 768px) {
+	pre {
+		font-size: 14px;
+	}
+
+	.pixel-letter {
+		padding: 20px;
+		min-height: 40px;
+	}
+
+	.click-prompt {
+		font-size: 9px;
+	}
+}
+
+@media (max-width: 480px) {
+	pre {
+		font-size: 12px;
+	}
+
+	.pixel-letter {
+		padding: 15px;
+		min-height: 40px;
+	}
+
+	.click-prompt {
+		font-size: 8px;
+	}
+}
+
+.locked {
+	position: relative;
+	opacity: 0.7;
+	filter: brightness(0.8);
+}
+
+.lock-icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 30px;
+	color: #ffffff;
+	z-index: 1;
+}
+
+.pixel-letter:not(.locked) .lock-icon {
+	display: none;
+}
+
+.pixel-letter:not(.locked) .click-prompt.hidden {
+	display: block !important;
+}
+
+/* Анимация замка */
+@keyframes shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	20% {
+		transform: translateX(-5px);
+	}
+	40% {
+		transform: translateX(5px);
+	}
+	60% {
+		transform: translateX(-5px);
+	}
+	80% {
+		transform: translateX(5px);
+	}
+}
+
+.locked:hover {
+	animation: shake 0.5s;
+	cursor: not-allowed;
+}

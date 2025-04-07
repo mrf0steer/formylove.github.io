@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>То что хочу тебе сказать...</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<div class="pixel-hearts"></div>
+		<div class="container">
+			<div class="letter-container">
+				<div class="pixel-letter" id="letter1" data-completed="false">
+					<div class="letter-content">
+						<pre id="letter-text1" class="hidden"></pre>
+						<div class="click-prompt">▼ НАЖМИ ▼</div>
+					</div>
+				</div>
+
+				<div class="pixel-letter locked" id="letter2" data-completed="false">
+					<div class="letter-content">
+						<div class="lock-icon"><i class="fas fa-lock"></i></div>
+						<pre id="letter-text2" class="hidden"></pre>
+						<div class="click-prompt hidden">▼ НАЖМИ ▼</div>
+					</div>
+				</div>
+
+				<div class="pixel-letter locked" id="letter3" data-completed="false">
+					<div class="letter-content">
+						<div class="lock-icon"><i class="fas fa-lock"></i></div>
+						<pre id="letter-text3" class="hidden"></pre>
+						<div class="click-prompt hidden">▼ НАЖМИ ▼</div>
+					</div>
+				</div>
+			</div>
+			<div class="cat-container">
+				<img src="cat.gif" class="cat-gif" alt="Анимированный кот" />
+			</div>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>
